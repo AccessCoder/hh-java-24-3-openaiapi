@@ -10,7 +10,13 @@ import java.util.List;
  *      "content": "Say this is a test!"}
  *      ],
  *      "temperature": 0.7
+ *      "response_format":{
+ *          "type": "json_object"
+ *      }
  *    }
  */
-public record OpenAiRequest(String model, List<OpenAiMessage> messages, double temperature) {
+public record OpenAiRequest(String model,
+                            List<OpenAiMessage> messages,
+                            double temperature,
+                            OpenAiFormat response_format) {
 }

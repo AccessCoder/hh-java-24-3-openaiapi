@@ -1,5 +1,6 @@
 package com.example.hhjava243openaiapi.service;
 
+import com.example.hhjava243openaiapi.model.OpenAiFormat;
 import com.example.hhjava243openaiapi.model.OpenAiMessage;
 import com.example.hhjava243openaiapi.model.OpenAiRequest;
 import com.example.hhjava243openaiapi.model.OpenAiResponse;
@@ -27,8 +28,9 @@ public class OpenAiService {
 
     public String getAnswerFromOpenAi(String question) {
         OpenAiRequest request = new OpenAiRequest("gpt-4o-mini",
-                List.of(new OpenAiMessage("user", question)),
-                0.2);
+                List.of(new OpenAiMessage("user", "Gib mir als JSON formatiert eine Liste von 10 Todos für den Bereich: " + question)),
+                0.2,
+                new OpenAiFormat("json_object"));
 
         OpenAiResponse response = client.post()
                 .contentType(MediaType.APPLICATION_JSON)
